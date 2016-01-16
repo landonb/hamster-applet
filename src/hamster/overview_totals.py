@@ -88,6 +88,15 @@ class TotalsBox(gtk.VBox):
             self.category_chart.selected_keys.append(key)
             self.selected_categories.append(key)
 
+        if not self.category_chart.selected_keys:
+            # [lb] Reset float to just one decimal place.
+            self.activity_chart.value_format = "%.1f"
+        else:
+            # [lb] Show three decimal places. Use case: I click a work
+            # Category to get times for time sheet entries, and I need
+            # more precision
+            self.activity_chart.value_format = "%.3f"
+
         self.calculate_totals()
         self.do_charts()
 
