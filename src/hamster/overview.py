@@ -109,6 +109,13 @@ class Overview(gtk.Object):
 
         self.timechart.day_start = self.day_start
 
+        # [lb] likes to see today's activities by default, rather than having
+        # to scroll all the way down. (At first I wanted to sort reverse
+        # chronologically so that the latest activity was at the top of the
+        # list, but showing just the day's activities seems good enough, and
+        # it's super easy to do; I assume trying to figure out how to reverse
+        # sort the Activities list would be a lot more work.)
+        self.on_day_activate(None)
 
         self.search()
 
