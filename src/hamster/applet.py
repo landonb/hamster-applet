@@ -26,7 +26,12 @@ import pygtk
 pygtk.require("2.0")
 import gtk, pango
 
-import gnomeapplet
+try:
+    import gnomeapplet
+except ImportError:
+    logging.warning("Could not import gnomeapplet. Defaulting to upper panel")
+    gnomeapplet = None
+
 import gobject
 import dbus, dbus.service, dbus.mainloop.glib
 import locale
@@ -110,9 +115,10 @@ class PanelButton(gtk.ToggleButton):
 
         popup_dir = self.get_parent().get_orient()
 
-        orient_vertical = popup_dir in [gnomeapplet.ORIENT_LEFT] or \
-                          popup_dir in [gnomeapplet.ORIENT_RIGHT]
-
+        orient_vertical = False
+        if gnomeapplet != None:
+            orient_vertical = popup_dir in [gnomeapplet.ORIENT_LEFT] or \
+                              popup_dir in [gnomeapplet.ORIENT_RIGHT]
 
         context = self.label.get_pango_context()
         metrics = context.get_metrics(self.label.style.font_desc,
@@ -148,9 +154,9 @@ class PanelButton(gtk.ToggleButton):
 
         orient_vertical = True
         new_size = allocation.width
-        if self.popup_dir in [gnomeapplet.ORIENT_LEFT]:
+        if gnomeapplet != None and self.popup_dir in [gnomeapplet.ORIENT_LEFT]:
             new_angle = 270
-        elif self.popup_dir in [gnomeapplet.ORIENT_RIGHT]:
+        elif gnomeapplet != None and self.popup_dir in [gnomeapplet.ORIENT_RIGHT]:
             new_angle = 90
         else:
             new_angle = 0
@@ -453,7 +459,10 @@ class HamsterApplet(object):
 
         self.popup_dir = self.applet.get_orient()
 
-        if self.popup_dir in (gnomeapplet.ORIENT_DOWN, gnomeapplet.ORIENT_UP):
+        if gnomeapplet == None:
+            # Default to upper panel (ORIENT_DOWN)
+            y = y + label.height
+        elif self.popup_dir in (gnomeapplet.ORIENT_DOWN, gnomeapplet.ORIENT_UP):
             if self.popup_dir == gnomeapplet.ORIENT_DOWN:
                 y = y + label.height
             else:

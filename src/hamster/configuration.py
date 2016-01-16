@@ -287,16 +287,20 @@ class GConfStore(gobject.GObject, Singleton):
         #for gconf refer to the full key path
         key = self._fix_key(key)
 
-        if vtype is bool:
-            self._client.set_bool(key, value)
-        elif vtype is str:
-            self._client.set_string(key, value)
-        elif vtype is int:
-            self._client.set_int(key, value)
-        elif vtype in (list, tuple):
-            #Save every value as a string
-            strvalues = [str(i) for i in value]
-            self._client.set_list(key, gconf.VALUE_STRING, strvalues)
+        try:
+            if vtype is bool:
+                self._client.set_bool(key, value)
+            elif vtype is str:
+                self._client.set_string(key, value)
+            elif vtype is int:
+                self._client.set_int(key, value)
+            elif vtype in (list, tuple):
+                #Save every value as a string
+                strvalues = [str(i) for i in value]
+                self._client.set_list(key, gconf.VALUE_STRING, strvalues)
+        except:
+            log.warn("Could not save '%s' to gconf database" % str(key))
+            return False
 
         return True
 
