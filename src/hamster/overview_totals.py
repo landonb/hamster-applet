@@ -1,6 +1,6 @@
 # - coding: utf-8 -
 
-# Copyright (C) 2008-2009 Toms Bauģis <toms.baugis at gmail.com>
+# Copyright (C) 2008-2009, 2016 Toms Bauģis <toms.baugis at gmail.com>
 
 # This file is part of Project Hamster.
 
@@ -92,10 +92,11 @@ class TotalsBox(gtk.VBox):
             # [lb] Reset float to just one decimal place.
             self.activity_chart.value_format = "%.1f"
         else:
-            # [lb] Show three decimal places. Use case: I click a work
-            # Category to get times for time sheet entries, and I need
-            # more precision
-            self.activity_chart.value_format = "%.3f"
+            # [lb] Show two decimal places. Use case: I click a work
+            # Category to get times for time sheet entries, and I
+            # need more precision. One-tenth of an hour is a full
+            # six minutes; one one-hundredth is 36 seconds.
+            self.activity_chart.value_format = "%.2f"
 
         self.calculate_totals()
         self.do_charts()
