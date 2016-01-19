@@ -4,22 +4,25 @@ Hamster Time Tracking Applet
 
 A tweak of the Hamster `GNOME <https://www.gnome.org/>`__ applet.
 
-- The Overview dialog defaults to showing the daily summary, rather than then weekly.
+1. Opening the Overview dialog shows the daily summary, rather than the weekly summary.
 
-  - This makes it easier to see the current day's activities when you open the Overview.
-    
-    - You don't have to scroll the dialog to the bottom every time you open it.
+  - Thus you can see the current day's activities without having to scroll.
 
-- Show three decimal places in Totals when one or more Activities is selected.
+2. The Totals screen shows two decimal places for each Activity, rather than just one decimal place.
 
-  - The latter makes it easy for me to fill out my employer's daily time sheets with more accurate numbers.
+  - A tenth of an hour is a full 6 minutes, but a hundredth of an hour is just 36 seconds.
 
-    - A tenth of an hour is only six minutes, but minutes count! =)
+    - If you're tracking project time on a ticket-by-ticket basic, using more precision
+      makes your task accounting more accurate, especially if you switch between the
+      same handful of tasks multiple times per day.
+
+  - Select one of more Categories to see two decimal places; if no categories are
+    selected, the display still just shows one decimal place.
 
 Using this fork
 ---------------
 
-Install hamster 2.9 packages from Ubuntu and then copy over a few files.
+Install hamster 2.9 packages from Ubuntu and replace a few files.
 
 (I'm lazy and didn't package this as a standalone project.)
 
@@ -60,7 +63,7 @@ but I didn't like it.
 
 Some reactions:
 
-- The Overview dialog is less useful in 3.x -- it only shows weekly activity,
+- The Overview dialog is less useful in 3.x — it only shows weekly activity,
   with no option to show daily or monthly activity.
 
 - The Statistics display is no longer its own tab but a drawer that slides
