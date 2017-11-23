@@ -39,6 +39,20 @@ load-plugins=
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 #disable=
+# 2017-11-22: [lb] This does not work.
+#   Also, the pylint output that MS Code shows vs. if you run pylint from
+#   the terminal is very different. -- Oh. I guess I need to set that in
+#   MS Code preferences,
+#       "python.linting.pylintArgs": [
+#         "--disable=W0312"
+#       ],
+#   but that seems stupid dumb. So, better yet:
+#       "python.linting.pylintArgs": [
+#         "--rcfile=.pylintrc",
+#       ],
+#   though it still bothers me a little that this is an IDE-wide setting.
+#disable=W0611
+disable=all
 
 
 [REPORTS]
