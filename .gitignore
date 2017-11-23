@@ -24,3 +24,4 @@ hamster-applet-*.tar.gz
 org.gnome.hamster.service
 .lock-wscript
 build
+.vscode/
