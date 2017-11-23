@@ -306,6 +306,9 @@ class CustomFactController(gtk.Object):
                self.new_tags.popup.get_property("visible"):
                 return False
 
+            if self.figure_description() or self.validate_fields():
+                return False
+
             self.close_window()
 
     def on_close(self, widget, event):
