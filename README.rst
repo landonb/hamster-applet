@@ -70,7 +70,7 @@ Some reactions:
   up from the bottom of the dialog, and there's no longer a summary time
   displayed for each task! (So I can't use the Statistics display to fill
   out my daily time sheet for work.)
-  
+
 - I'm not sure why these features were removed, but it feels like a step
   backward for the project.
 
