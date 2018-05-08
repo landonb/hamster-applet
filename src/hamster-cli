@@ -207,7 +207,12 @@ if __name__ == '__main__':
     i18n.setup_i18n()
 
     usage = _(
-"""Client for controlling the hamster-applet. Usage:
+"""
+########################################
+DEPRECATED: THIS IS THE OLD HAMSTER, YO!
+########################################
+
+Client for controlling the hamster-applet. Usage:
   %(prog)s start ACTIVITY [START_TIME[-END_TIME]]
   %(prog)s stop
   %(prog)s list [START_TIME[-END_TIME]]
